@@ -21,6 +21,7 @@ coin_metrics_fact = spark.read.parquet(f"{processed_cont_path}/coin_metrics_fact
 
 #compute summary statistics for numeric columns
 summary_stats = coin_metrics_fact.select("open", "close", "low", "high", "volumefrom", "volumeto").describe()
+display(summary_stats)
 
 # COMMAND ----------
 
