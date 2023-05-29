@@ -17,6 +17,7 @@ jobs:
     steps:
       - script: |
           echo "Build artifact that contains all notebooks to be later consumed by release pipeline"
+        displayName: "Compile notebooks"
       - task: PublishBuildArtifacts@1
         displayName: 'Publish Artifact: Notebooks'
         inputs:
