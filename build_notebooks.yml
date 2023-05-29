@@ -1,13 +1,23 @@
 trigger:
-- main
+  branches:
+    include:
+      - main
+  paths:
+    exclude:
+      - build-notebooks.yml
+      - release-notebooks.yml
 
-pool:
-  vmImage: ubuntu-latest
+variables:
+  vmImageName: ubuntu-latest
 
-steps:
-- task: PublishBuildArtifacts@1
-  displayName: 'Publish Artifact: Notebooks'
-  inputs:
-    PathtoPublish: '$(Build.Repository.LocalPath)'
-    ArtifactName: 'Crypto Notebooks'
-    publishLocation: Container
+jobs:
+  - job: Build
+    pool:
+      vmImage: $(vmImageName)
+    steps:
+      - task: PublishBuildArtifacts@1
+        displayName: 'Publish Artifact: Notebooks'
+        inputs:
+          PathtoPublish: '$(Build.Repository.LocalPath)'
+          ArtifactName: 'Crypto Notebooks'
+          publishLocation: Container
