@@ -38,8 +38,9 @@ jobs:
 
         - task: DownloadPipelineArtifact@2
           inputs: 
+            buildType: "specific"
             artifactName: Crypto Notebooks
-            buildId: 29
+            definition: 29
             targetPath: $(System.DefaultWorkingDirectory)/databricks
         
         - script: ls $(System.DefaultWorkingDirectory)/databricks
