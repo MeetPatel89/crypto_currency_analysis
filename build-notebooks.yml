@@ -22,6 +22,7 @@ jobs:
 
       - script: |
           echo "Going into artifact staging directory"
+          pwd
           cd $(Build.ArtifactStagingDirectory)
           ls
           echo $(System.DefinitionId) > build_definition.txt
