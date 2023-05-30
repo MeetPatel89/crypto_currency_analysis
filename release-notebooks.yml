@@ -6,8 +6,8 @@ resources:
     - pipeline: crypto_analysis_release
       source: crypto_analysis_build
       trigger:
-      branches:
-       - main
+        branches:
+          - main
 
 variables:
     - name: vmImageName 
@@ -22,6 +22,6 @@ jobs:
       environment: Dev
       pool:
         vmImage: $(vmImageName)
-    - steps:
+      steps:
         - script: |
             echo "Hello World!"
