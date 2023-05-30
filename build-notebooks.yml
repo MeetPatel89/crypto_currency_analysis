@@ -28,8 +28,7 @@ jobs:
           publishLocation: Container
 
       - script: |
-          echo "Get the build id for current build"
-          echo  $(Build.BuildId)
+          echo "Going into artifact staging directory"
           cd $(Build.ArtifactStagingDirectory)
           ls
           echo $(System.DefinitionId) > build_definition.txt
