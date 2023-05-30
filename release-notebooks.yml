@@ -39,6 +39,7 @@ jobs:
         - task: DownloadPipelineArtifact@2
           inputs: 
             buildType: "specific"
+            project: cryptocurrency_analysis
             artifactName: Crypto Notebooks
             definition: 29
             targetPath: $(System.DefaultWorkingDirectory)/databricks
