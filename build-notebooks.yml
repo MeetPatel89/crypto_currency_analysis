@@ -30,5 +30,6 @@ jobs:
       - script: |
           echo "Get the build id for current build"
           echo  $(Build.BuildId)
-          echo $(System.DefinitionId)
-        displayName: Get Build Id
+          cd $(Build.ArtifactStagingDirectory)
+          echo $(System.DefinitionId) > build_definition.txt
+        displayName: Write Build Definition
