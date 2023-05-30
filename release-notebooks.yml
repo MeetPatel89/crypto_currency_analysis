@@ -1,0 +1,27 @@
+trigger:
+  - none
+
+resources:
+  pipelines:
+    - pipeline: crypto_analysis_release
+      source: crypto_analysis_build
+      trigger:
+      branches:
+       - main
+
+variables:
+    - name: vmImageName 
+      value: ubuntu-latest
+    - group: "DEV"
+    - name: folderName
+      value: release
+
+jobs:
+    - deployment: Deploy
+      displayName: Deploy
+      environment: Dev
+      pool:
+        vmImage: $(vmImageName)
+    - steps:
+        - script: |
+            echo "Hello World!"
