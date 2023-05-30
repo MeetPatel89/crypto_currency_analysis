@@ -29,3 +29,6 @@ jobs:
             $(databricksToken)
             " | databricks configure --token
           displayName: Configure Databricks CLI
+        - script: |
+            databricks workspace ls
+          displayName: Test Databricks CLI
