@@ -15,12 +15,18 @@ jobs:
     pool:
       vmImage: $(vmImageName)
     steps:
+
       - script: |
           echo "Build artifact that contains all notebooks to be later consumed by release pipeline"
         displayName: "Compile notebooks"
+
       - task: PublishBuildArtifacts@1
         displayName: 'Publish Artifact: Notebooks'
         inputs:
           PathtoPublish: '$(Build.Repository.LocalPath)'
           ArtifactName: 'Crypto Notebooks'
           publishLocation: Container
+
+      - script: |
+          echo "Get the build number for current build"
+          echo  $(Build.BuildNumber)
