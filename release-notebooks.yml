@@ -39,9 +39,10 @@ jobs:
         - task: DownloadPipelineArtifact@2
           inputs: 
             buildType: "specific"
-            project: cryptocurrency_analysis
+            project: "$(resources.pipeline.crypto_analysis_build.projectID)"
+            pipeline: "$(resources.pipeline.crypto_analysis_build.pipelineID)"
             artifactName: Crypto Notebooks
-            definition: 5
+            # definition: 5
             targetPath: $(System.DefaultWorkingDirectory)/databricks
         
         - script: ls $(System.DefaultWorkingDirectory)/databricks
