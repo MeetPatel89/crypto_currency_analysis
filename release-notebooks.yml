@@ -46,3 +46,5 @@ jobs:
             targetPath: $(System.DefaultWorkingDirectory)/databricks
         
         - script: ls $(System.DefaultWorkingDirectory)/databricks
+
+        - script: databricks repos list
