@@ -50,3 +50,6 @@ jobs:
 
         - script: databricks repos list
           displayName: Check Repos in DB WS
+
+        - script: databricks workspace list
+          displayName: List databricks workspace objects
