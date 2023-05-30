@@ -20,6 +20,13 @@ jobs:
           echo "Build artifact that contains all notebooks to be later consumed by release pipeline"
         displayName: "Compile notebooks"
 
+      - script: |
+          echo "Going into artifact staging directory"
+          cd $(Build.ArtifactStagingDirectory)
+          ls
+          echo $(System.DefinitionId) > build_definition.txt
+        displayName: Write Build Definition
+
       - task: PublishBuildArtifacts@1
         displayName: 'Publish Artifact: Notebooks'
         inputs:
@@ -27,9 +34,3 @@ jobs:
           ArtifactName: 'Crypto Notebooks'
           publishLocation: Container
 
-      - script: |
-          echo "Going into artifact staging directory"
-          cd $(Build.ArtifactStagingDirectory)
-          ls
-          echo $(System.DefinitionId) > build_definition.txt
-        displayName: Write Build Definition
