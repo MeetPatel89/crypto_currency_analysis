@@ -35,10 +35,10 @@ jobs:
         - script: |
             databricks workspace ls
           displayName: Test Databricks CLI
-          
+
         - task: DownloadPipelineArtifact@2
           inputs: 
             artifactName: Crypto Notebooks
             targetPath: $(System.DefaultWorkingDirectory)/databricks
         
-        -script: ls $(System.DefaultWorkingDirectory)/databricks
+        - script: ls $(System.DefaultWorkingDirectory)/databricks
