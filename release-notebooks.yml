@@ -41,7 +41,7 @@ jobs:
             buildType: "specific"
             project: cryptocurrency_analysis
             artifactName: Crypto Notebooks
-            definition: 29
+            definition: 5
             targetPath: $(System.DefaultWorkingDirectory)/databricks
         
         - script: ls $(System.DefaultWorkingDirectory)/databricks
