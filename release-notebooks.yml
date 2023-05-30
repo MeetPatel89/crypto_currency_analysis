@@ -46,5 +46,7 @@ jobs:
             targetPath: $(System.DefaultWorkingDirectory)/databricks
         
         - script: ls $(System.DefaultWorkingDirectory)/databricks
+          displayName: Check databricks folder contents
 
         - script: databricks repos list
+          displayName: Check Repos in DB WS
