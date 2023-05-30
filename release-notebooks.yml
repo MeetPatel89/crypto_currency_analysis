@@ -36,14 +36,10 @@ jobs:
             databricks workspace ls
           displayName: Test Databricks CLI
 
-        - script: |
-            echo "$(resources.pipeline.crypto_analysis_build.pipelineID)"
-          displayName: Get Build Id for Triggering Build
-
         - task: DownloadPipelineArtifact@2
           inputs: 
             artifactName: Crypto Notebooks
-            specificBuildWithTriggering: true
+            specificBuildWithTriggering: True
             targetPath: $(System.DefaultWorkingDirectory)/databricks
         
         - script: ls $(System.DefaultWorkingDirectory)/databricks
