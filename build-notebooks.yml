@@ -28,5 +28,6 @@ jobs:
           publishLocation: Container
 
       - script: |
-          echo "Get the build number for current build"
-          echo  $(Build.BuildNumber)
+          echo "Get the build id for current build"
+          echo  $(Build.BuildId)
+        displayName: Get Build Id
