@@ -22,6 +22,9 @@ jobs:
       environment: Dev
       pool:
         vmImage: $(vmImageName)
-      steps:
-        - script: |
-            echo "Hello World!"
+      strategy:
+        runOnce:
+          deploy:
+            steps:
+              - script: |
+                echo "Hello World!"
