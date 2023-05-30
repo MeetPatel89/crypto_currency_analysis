@@ -39,6 +39,7 @@ jobs:
         - task: DownloadPipelineArtifact@2
           inputs: 
             artifactName: Crypto Notebooks
+            specificBuildWithTriggering: true
             targetPath: $(System.DefaultWorkingDirectory)/databricks
         
         - script: ls $(System.DefaultWorkingDirectory)/databricks
