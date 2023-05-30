@@ -23,3 +23,9 @@ jobs:
       steps:
         - script: pip install databricks-cli
           displayName: Install Databricks CLI
+        - script: |
+            echo "
+            $(databricksHost)
+            $(databricksToken)
+            " | databricks configure --token
+          displayName: Configure Databricks CLI
