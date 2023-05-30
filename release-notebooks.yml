@@ -21,14 +21,24 @@ jobs:
       pool:
         vmImage: $(vmImageName)
       steps:
+
         - script: pip install databricks-cli
           displayName: Install Databricks CLI
+
         - script: |
             echo "
             $(databricksHost)
             $(databricksToken)
             " | databricks configure --token
           displayName: Configure Databricks CLI
+
         - script: |
             databricks workspace ls
           displayName: Test Databricks CLI
+          
+        - task: DownloadPipelineArtifact@2
+          inputs: 
+            artifactName: Crypto Notebooks
+            targetPath: $(System.DefaultWorkingDirectory)/databricks
+        
+        -script: ls $(System.DefaultWorkingDirectory)/databricks
