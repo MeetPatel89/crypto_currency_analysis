@@ -31,6 +31,13 @@ jobs:
         displayName: Write Build Definition
 
       - task: PublishBuildArtifacts@1
+        displayName: 'Publish Artifact: Build Definition'
+        inputs:
+          PathtoPublish: $(Build.ArtifactStagingDirectory)
+          ArtifactName: 'Build Definition'
+          publishLocation: Container
+
+      - task: PublishBuildArtifacts@1
         displayName: 'Publish Artifact: Notebooks'
         inputs:
           PathtoPublish: '$(Build.Repository.LocalPath)'
