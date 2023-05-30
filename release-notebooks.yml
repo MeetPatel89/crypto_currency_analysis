@@ -20,9 +20,6 @@ jobs:
     - job: Release
       pool:
         vmImage: $(vmImageName)
-      strategy:
-        runOnce:
-          deploy:
-            steps:
-              - script: |
-                  echo "Hello World!"
+      steps:
+        - script: |
+            echo "Hello World!"
