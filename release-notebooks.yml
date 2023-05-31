@@ -33,7 +33,7 @@ jobs:
           displayName: Configure Databricks CLI
 
         - script: |
-            databricks workspace ls -a
+            databricks workspace ls
           displayName: Test Databricks CLI
 
         - task: DownloadPipelineArtifact@2
@@ -42,10 +42,9 @@ jobs:
             project: "$(resources.pipeline.crypto_analysis_build.projectID)"
             pipeline: "$(resources.pipeline.crypto_analysis_build.pipelineID)"
             artifactName: Crypto Notebooks
-            # definition: 5
             targetPath: $(System.DefaultWorkingDirectory)/databricks
         
-        - script: ls $(System.DefaultWorkingDirectory)/databricks
+        - script: ls -a $(System.DefaultWorkingDirectory)/databricks
           displayName: Check databricks folder contents
 
         - script: databricks repos list
