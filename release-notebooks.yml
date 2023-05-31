@@ -53,3 +53,6 @@ jobs:
 
         - script: databricks workspace list
           displayName: List databricks workspace objects
+
+        - script: databricks workspace mkdirs release
+          displayName: Create Release in DB WS
