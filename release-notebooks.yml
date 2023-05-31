@@ -54,5 +54,11 @@ jobs:
         - script: databricks workspace list
           displayName: List databricks workspace objects
 
-        - script: databricks workspace mkdirs "/release"
+        - script: | 
+            databricks workspace rm --recursive "/release"
+            databricks workspace mkdirs "/release"
           displayName: Create Release in DB WS
+
+          - script: |
+              databricks import_dir $(System.DefaultWorkingDirectory)/databricks "/release/"
+            displayName: Move Notebooks to DB WS
