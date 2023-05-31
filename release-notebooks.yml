@@ -59,6 +59,6 @@ jobs:
             databricks workspace mkdirs "/release"
           displayName: Create Release in DB WS
 
-          - script: |
+        - script: |
               databricks import_dir $(System.DefaultWorkingDirectory)/databricks "/release/"
-            displayName: Move Notebooks to DB WS
+          displayName: Move Notebooks to DB WS
