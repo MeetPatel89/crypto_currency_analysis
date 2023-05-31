@@ -33,7 +33,7 @@ jobs:
           displayName: Configure Databricks CLI
 
         - script: |
-            databricks workspace ls
+            databricks workspace ls -a
           displayName: Test Databricks CLI
 
         - task: DownloadPipelineArtifact@2
