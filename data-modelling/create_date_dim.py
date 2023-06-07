@@ -1,6 +1,6 @@
 # Databricks notebook source
 from pyspark.sql.types import StructField, StructType, StringType, LongType, DoubleType, TimestampType
-from pyspark.sql.functions import from_unixtime, date_format, row_number, lit, current_timestamp
+from pyspark.sql.functions import from_unixtime, date_format, row_number, lit, current_timestamp, weekofyear
 from pyspark.sql.window import Window
 
 # COMMAND ----------
@@ -45,6 +45,7 @@ date_dim = date_dim.withColumns(
         "month_name": date_format("unix_datetime", "MMMM"),
         "year": date_format("unix_datetime", "yyyy"),
         "quarter": date_format("unix_datetime", "QQQ"),
+        "week_of_year": weekofyear("unix_datetime"),
         "id": row_number().over(Window.partitionBy(lit("")).orderBy(lit(""))),
         "ingestion_date": current_timestamp()
     }
@@ -52,7 +53,7 @@ date_dim = date_dim.withColumns(
 
 # COMMAND ----------
 
-date_dim = date_dim.select("id", "unix_epoch", "unix_datetime", "day_name", "month_name", "quarter", "year", "ingestion_date")
+date_dim = date_dim.select("id", "unix_epoch", "unix_datetime", "day_name", "month_name", "quarter", "year", "week_of_year", "ingestion_date")
 
 # COMMAND ----------
 
