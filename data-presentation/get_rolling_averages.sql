@@ -54,7 +54,7 @@ DROP TABLE IF EXISTS metrics.closing_price
 -- COMMAND ----------
 
 -- MAGIC %python 
--- MAGIC closing_price.write.mode("Overwrite").format("parquet").option("path", f"{presentation_cont_path}/closing_price").saveAsTable("metrics.closing_price")
+-- MAGIC closing_price.write.mode("Overwrite").format("parquet").saveAsTable("metrics.closing_price")
 
 -- COMMAND ----------
 
@@ -70,7 +70,10 @@ metrics.closing_price
 -- COMMAND ----------
 
 -- create permanent view for rolling averages over 5 days, 7 days, 10 days, 15 days and 30 days for dashboarding
-CREATE OR REPLACE VIEW metrics.rolling_averages
+DROP TABLE IF EXISTS metrics.rolling_averages;
+CREATE TABLE metrics.rolling_averages
+USING PARQUET
+LOCATION "/mnt/cryptoanalysisdl/presentation/rolling_averages"
 AS
 SELECT 
 cast(datetime as DATE) date,
@@ -112,6 +115,11 @@ metrics.closing_price
 -- COMMAND ----------
 
 SELECT * FROM metrics.rolling_averages
+
+-- COMMAND ----------
+
+-- drop closing_price - this will delete both metadata and actual data as it's managed table
+DROP TABLE IF EXISTS metrics.closing_price
 
 -- COMMAND ----------
 
