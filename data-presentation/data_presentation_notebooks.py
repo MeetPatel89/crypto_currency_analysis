@@ -1,5 +1,12 @@
 # Databricks notebook source
-rolling_avgs_run = dbutils.notebook.run("get_rolling_averages", 0)
+base_tables_run = dbutils.notebook.run("get_base_tables", 0)
+
+# COMMAND ----------
+
+if base_tables_run == "Success":
+    rolling_avgs_run = dbutils.notebook.run("get_rolling_averages", 0)
+else:
+    print("Get base tables notebook couldn't run successfully!")
 
 # COMMAND ----------
 
