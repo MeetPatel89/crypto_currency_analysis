@@ -42,7 +42,8 @@ This is an exploratory data analysis and visualization project as per guidelines
     - Without DAX -->
         - As requested by client all aggregations and data transformations were created within databricks and dataset with rolling averages was loaded to presentation layer of azure data lake storage
         - Rolling averages dataset was imported to power bi desktop using azure databricks connector and line chart was created as follows:
-        ![Alt text](/images/powerbi_snap.png "Optional title")
+        
+        ![Alt text](/images/powerbi_snap.png "Power BI Service Report")
         - Check following link to access above report:
         https://app.powerbi.com/groups/3325ad30-c355-4373-9bda-3596b5dad2b4/reports/1fe35262-96a0-4e37-b340-aca9daa2b06d/ReportSection?experience=power-bi
 
@@ -56,5 +57,14 @@ This is an exploratory data analysis and visualization project as per guidelines
     - Pull Request is made to main branch
     - Once approved and merged to main branch both build and release pipelines are triggered sequentially
         - Build pipeline (check build-notebooks.yml in project root) builds artifact which comprises of python and sql notebooks in codebase. Once complete it triggers release pipeline
+        
+        ![Alt text](/images/build_pipeline.png "Build Pipeline Run")
+        - Artifacts are funnelled to release pipeline
+
+        ![Alt text](/images/artifact.png "Build Artifacts")
         - Release pipeline (check release-notebooks.yml in project root) releases built artifact to databricks workspace using Databricks CLI
+        
+        ![Alt text](/images/release_pipeline.png "Release Pipeline Run")
         - Newly released notebooks can be accessed by any developer working on databricks workspace with appropriate permissions
+        
+        ![Alt text](/images/databricks_release.png "Release in DB Workspace")
