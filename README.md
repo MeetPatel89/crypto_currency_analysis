@@ -43,7 +43,7 @@ This is an exploratory data analysis and visualization project as per guidelines
         - As requested by client all aggregations and data transformations were created within databricks and dataset with rolling averages was loaded to presentation layer of azure data lake storage
         - Rolling averages dataset was imported to power bi desktop using azure databricks connector and line chart was created as follows:
         
-        ![Alt text](/images/powerbi_snap.png "Power BI Service Report")
+        ![Alt text](/images/rolling_avg.png "Power BI Service Report")
         - Check following link to access above report:
         https://app.powerbi.com/groups/3325ad30-c355-4373-9bda-3596b5dad2b4/reports/1fe35262-96a0-4e37-b340-aca9daa2b06d/ReportSection?experience=power-bi
 
