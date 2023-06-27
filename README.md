@@ -42,13 +42,17 @@ This is an exploratory data analysis and visualization project as per guidelines
     - Without DAX -->
         - As requested by client all aggregations and data transformations were created within databricks and dataset with rolling averages was loaded to presentation layer of azure data lake storage
         - Rolling averages dataset was imported to power bi desktop using azure databricks connector and line chart was created as follows:
-        ![Alt text](/images/powerbi_snap.png "Optional title")
-        - Check following link to access above report:
+        ![Alt text](/images/powerbi_snap.png "Rolling Averages without DAX")
+        - Rolling averages dataset was also imported to power bi desktop using azure databricks connector - refer to crypto_rolling_averages.pbix in powerbi folder in root of this project
+        - Check following link to access above report in powerbi service:
         https://app.powerbi.com/groups/3325ad30-c355-4373-9bda-3596b5dad2b4/reports/1fe35262-96a0-4e37-b340-aca9daa2b06d/ReportSection?experience=power-bi
 
     - With DAX --> 
-        - Create a data model with three tables --> symbol_dim, date_dim, coin_metrics_fact (IN PROGRESS)
-        - Visualize rolling averages using DAX measures (IN PROGRESS)
+        - Created a data model with three tables --> symbol_dim, date_dim, coin_metrics_fact 
+        - Visualized rolling averages using DAX measures 
+        ![Alt text](/images/powerbi_dax_snap.png "Rolling Averages using DAX")
+        - Refer to crypto_rolling_averages_dax.pbix in powerbi folder in root of this project
+        - Check following link to access above report in powerbi service: https://app.powerbi.com/view?r=eyJrIjoiN2RkZGZmMDEtZjdkOS00YzI5LWE2NjUtNTFjZWRkNDdjMmJkIiwidCI6IjdmYWFhMjMyLWI0MDctNDhlZS04ZmQyLWE0ZDkyZWZhOWEwNCIsImMiOjJ9
 
 - CI/CD Devops
     - This code base is housed in Azure Devops Repos 
