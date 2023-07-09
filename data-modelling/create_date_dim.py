@@ -65,12 +65,12 @@ display(date_dim)
 
 # COMMAND ----------
 
-date_dim_path = f"{processed_cont_path}/date_dim.parquet"
-date_dim.write.mode("Overwrite").parquet(date_dim_path)
+date_dim_path = f"{processed_cont_path}/date_dim"
+date_dim.write.format("delta").mode("overwrite").save(date_dim_path)
 
 # COMMAND ----------
 
-a = spark.read.parquet(date_dim_path)
+a = spark.read.format("delta").load(date_dim_path)
 a.sort("unix_epoch", ascending=False).show(20)
 
 # COMMAND ----------

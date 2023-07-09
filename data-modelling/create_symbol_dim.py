@@ -32,12 +32,13 @@ symbol_dim.printSchema()
 
 # COMMAND ----------
 
-symbol_dim_path = f"{processed_cont_path}/symbol_dim.parquet"
-symbol_dim.write.mode("Overwrite").parquet(symbol_dim_path)
+symbol_dim_path = f"{processed_cont_path}/symbol_dim"
+# symbol_dim.write.mode("Overwrite").parquet(symbol_dim_path)
+symbol_dim.write.format("delta").mode("overwrite").save(symbol_dim_path)
 
 # COMMAND ----------
 
-a = spark.read.parquet(symbol_dim_path)
+a = spark.read.format("delta").load(symbol_dim_path)
 a.printSchema()
 
 # COMMAND ----------

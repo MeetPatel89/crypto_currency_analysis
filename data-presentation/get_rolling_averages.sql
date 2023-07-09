@@ -12,19 +12,19 @@
 -- COMMAND ----------
 
 -- MAGIC %python
--- MAGIC date_dim = spark.read.parquet(f"{processed_cont_path}/date_dim.parquet")
+-- MAGIC date_dim = spark.read.format("delta").load(f"{processed_cont_path}/date_dim")
 -- MAGIC display(date_dim)
 
 -- COMMAND ----------
 
 -- MAGIC %python
--- MAGIC symbol_dim = spark.read.parquet(f"{processed_cont_path}/symbol_dim.parquet")
+-- MAGIC symbol_dim = spark.read.format("delta").load(f"{processed_cont_path}/symbol_dim")
 -- MAGIC display(symbol_dim)
 
 -- COMMAND ----------
 
 -- MAGIC %python
--- MAGIC coin_metrics_fact = spark.read.parquet(f"{processed_cont_path}/coin_metrics_fact.parquet")
+-- MAGIC coin_metrics_fact = spark.read.format("delta").load(f"{processed_cont_path}/coin_metrics_fact")
 -- MAGIC display(coin_metrics_fact)
 
 -- COMMAND ----------
@@ -69,10 +69,15 @@ metrics.closing_price
 
 -- COMMAND ----------
 
--- create permanent view for rolling averages over 5 days, 7 days, 10 days, 15 days and 30 days for dashboarding
+-- MAGIC %python
+-- MAGIC dbutils.fs.rm("/mnt/cryptoanalysisdl/presentation/rolling_averages",recurse=True)
+
+-- COMMAND ----------
+
+-- create external table for rolling averages over 5 days, 7 days, 10 days, 15 days and 30 days for dashboarding
 DROP TABLE IF EXISTS metrics.rolling_averages;
-CREATE TABLE metrics.rolling_averages
-USING PARQUET
+CREATE EXTERNAL TABLE metrics.rolling_averages
+USING DELTA
 LOCATION "/mnt/cryptoanalysisdl/presentation/rolling_averages"
 AS
 SELECT 
@@ -125,3 +130,7 @@ DROP TABLE IF EXISTS metrics.closing_price
 
 -- MAGIC %python
 -- MAGIC dbutils.notebook.exit("Success")
+
+-- COMMAND ----------
+
+

@@ -7,15 +7,15 @@ from pyspark.sql.functions import col, max, min, corr
 
 # COMMAND ----------
 
-date_dim = spark.read.parquet(f"{processed_cont_path}/date_dim.parquet")
+date_dim = spark.read.format("delta").load(f"{processed_cont_path}/date_dim")
 
 # COMMAND ----------
 
-symbol_dim = spark.read.parquet(f"{processed_cont_path}/symbol_dim.parquet")
+symbol_dim = spark.read.format("delta").load(f"{processed_cont_path}/symbol_dim")
 
 # COMMAND ----------
 
-coin_metrics_fact = spark.read.parquet(f"{processed_cont_path}/coin_metrics_fact.parquet")
+coin_metrics_fact = spark.read.format("delta").load(f"{processed_cont_path}/coin_metrics_fact")
 
 # COMMAND ----------
 

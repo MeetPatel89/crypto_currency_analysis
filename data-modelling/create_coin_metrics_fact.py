@@ -47,8 +47,8 @@ coin_metrics_fact = coin_metrics_fact.select("symbol", "time", "close", "high", 
 
 # COMMAND ----------
 
-symbol_dim_path = f"{processed_cont_path}/symbol_dim.parquet"
-symbol_dim = spark.read.parquet(symbol_dim_path)
+symbol_dim_path = f"{processed_cont_path}/symbol_dim"
+symbol_dim = spark.read.format("delta").load(symbol_dim_path)
 
 # COMMAND ----------
 
@@ -58,12 +58,8 @@ coin_metrics_fact = coin_metrics_fact.select("symbol_id", "time", "open", "close
 
 # COMMAND ----------
 
-coin_metrics_fact.count()
-
-# COMMAND ----------
-
-date_dim_path = f"{processed_cont_path}/date_dim.parquet"
-date_dim = spark.read.parquet(date_dim_path)
+date_dim_path = f"{processed_cont_path}/date_dim"
+date_dim = spark.read.format("delta").load(date_dim_path)
 
 # COMMAND ----------
 
@@ -73,12 +69,12 @@ coin_metrics_fact = coin_metrics_fact.select("date_id", "symbol_id", "open", "cl
 
 # COMMAND ----------
 
-coin_metrics_fact_path = f"{processed_cont_path}/coin_metrics_fact.parquet"
-coin_metrics_fact.write.mode("Overwrite").parquet(coin_metrics_fact_path)
+coin_metrics_fact_path = f"{processed_cont_path}/coin_metrics_fact"
+coin_metrics_fact.write.format("delta").mode("overwrite").save(coin_metrics_fact_path)
 
 # COMMAND ----------
 
-a = spark.read.parquet(coin_metrics_fact_path)
+a = spark.read.format("delta").load(coin_metrics_fact_path)
 a.printSchema()
 
 # COMMAND ----------
