@@ -29,6 +29,9 @@ This is an exploratory data analysis and visualization project as per guidelines
 
 ## Delivery
 
+- Lakehouse Architecture Schematics (Please refer below for notebooks and jobs output)
+
+![Alt text](/images/lakehouse_architecture.jpg "Lakehouse Architecture")
 - Notebooks are divided into three folders:
     - data-integration --> Make API calls to get daily history data for top 10 coins and storing it in raw container (ADLS Gen2)
     - data-modelling --> Model raw data into three tables - coin_metrics_fact, date_dim, symbol_dim - store them in processed container (ADLS Gen2)
@@ -37,6 +40,23 @@ This is an exploratory data analysis and visualization project as per guidelines
 - Jobs
     - All notebooks for data integration, data modelling and data presentation are running in a databricks job cluster schedule to run every Sunday
     - Please reach out using contact details mentioned in resume if you want notifications for the job run output
+    - Current jobs cluster run 
+
+![Alt text](/images/job_run.png "Databricks Job Clusters")
+
+    - Current jobs run output
+        - data-integration notebooks --> 
+            - https://meetpatel89.github.io/get_top_10_coins/
+            - https://meetpatel89.github.io/get_history_data/
+        - data-modelling notebooks -->
+            - https://meetpatel89.github.io/create_symbol_dim/
+            - https://meetpatel89.github.io/create_date_dim/
+            - https://meetpatel89.github.io/create_coin_metrics_fact/
+        - data-presentation notebooks -->
+            - https://meetpatel89.github.io/get_base_tables/
+            - https://meetpatel89.github.io/get_rolling_averages/
+            - https://meetpatel89.github.io/exploratory_analysis/
+
 
 - Visualization
     - Without DAX -->
